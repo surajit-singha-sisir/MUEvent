@@ -1,0 +1,656 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+a {
+    color: #000000;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    font-size: 1.1rem;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.hide {
+    display: none;
+    animation: fadeOut 0.5s ease;
+}
+
+header {
+    width: 100%;
+    background-color: #EDEDED;
+}
+
+.inner-header {
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 1rem;
+    flex-wrap: wrap;
+    transition: all 0.5s ease;
+}
+
+.inner-header .column {
+    min-width: 10rem;
+    max-width: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-header .signin {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 1.5rem;
+    gap: 0.5rem;
+}
+
+.inner-header .signin img {
+    width: auto;
+    height: 100%;
+}
+
+
+/* RECENT EVENTS STYLE */
+.recent-event {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.inner-recent-event {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 90%;
+    position: relative;
+    margin: auto;
+}
+
+.event-catName {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.event-catName .redBox {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
+
+.event-catName p {
+    font-weight: 600;
+    font-size: large;
+}
+
+/* UPCOMING TABLE START */
+.event-table {
+    display: block;
+    max-width: 100%;
+    min-width: 60%;
+    overflow-x: scroll;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+    transition: all 0.5s ease;
+}
+
+.event-table thead {
+    background-color: #e9e9e9;
+}
+
+.event-table th,
+td {
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.event-table tr:hover {
+    background-color: #E8FFEA;
+    cursor: pointer;
+}
+
+.event-table .tdImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 10rem;
+    max-width: 18rem;
+    height: auto;
+    padding: 1rem;
+}
+
+.event-table .tdImg img {
+    width: 100%;
+    height: auto;
+}
+
+/* Scrollbar CSS */
+.event-table::-webkit-scrollbar {
+    width: 1rem;
+    min-height: 0.4rem;
+    max-height: 0.6rem;
+}
+
+.event-table::-webkit-scrollbar-button {
+    background-color: #fff;
+}
+
+/* Track */
+.event-table::-webkit-scrollbar-track {
+    background-color: #dddddd;
+}
+
+/* Handle */
+.event-table::-webkit-scrollbar-thumb {
+    width: 1rem;
+    height: 0.4rem;
+    display: block;
+    background: transparent;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+.event-table::-webkit-scrollbar-thumb:hover {
+    background: #f8f3f3;
+}
+
+
+/* POPUP EVENT DATA */
+.event-data {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.event-data .dark-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000de;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.event-data .cross {
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    background-color: #272626;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    z-index: inherit;
+    transition: all 0.3s ease;
+    animation: chokkorBack 0.5s ease;
+}
+
+.event-data .cross:hover {
+    color: red;
+    background-color: #e9e9e9;
+    transition: all 0.3s ease;
+    animation: chokkor 0.5s ease;
+}
+
+@keyframes chokkor {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes chokkorBack {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.inner-event-data {
+    position: relative;
+    width: 90%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: inherit;
+}
+
+.inner-event-data .event-title {
+    position: relative;
+    color: black;
+    display: flex;
+    width: 35rem;
+    transform: translateY(1rem);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.inner-event-data .event-title h1 {
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    color: red;
+}
+
+/*  -----------------------------
+        MAIN EVENT CONTAINER
+    -----------------------------*/
+.main-relative-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+/*  -----------------------------
+        MAIN EVENT CONTAINER
+    -----------------------------*/
+
+/* TIMER */
+.timer {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    width: inherit;
+    height: 2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.time-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.time-counter .timerBox {
+    background-color: #790303;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 0.2rem;
+}
+
+.time-counter .hour::after {
+    content: 'hour';
+    position: absolute;
+    bottom: -0.8rem;
+    font-size: 0.5rem;
+    color: #424242;
+}
+
+.time-counter .minutes::after {
+    content: 'minutes';
+    position: absolute;
+    bottom: -0.8rem;
+    font-size: 0.5rem;
+    color: #424242;
+}
+
+.time-counter .seconds::after {
+    content: 'seconds';
+    position: absolute;
+    bottom: -0.8rem;
+    font-size: 0.5rem;
+    color: #424242;
+}
+
+
+
+/* EVENT CONTAINER */
+.event-container {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+        "ax bx";
+    gap: 1rem;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar CSS */
+.event-container::-webkit-scrollbar {
+    width: 1rem;
+    min-height: 0.4rem;
+    max-height: 0.6rem;
+}
+
+.event-container::-webkit-scrollbar-button {
+    background-color: #fff;
+}
+
+/* Track */
+.event-container::-webkit-scrollbar-track {
+    background-color: #dddddd;
+}
+
+/* Handle */
+.event-container::-webkit-scrollbar-thumb {
+    width: 1rem;
+    height: 0.4rem;
+    display: block;
+    background: transparent;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+.event-container::-webkit-scrollbar-thumb:hover {
+    background: #f8f3f3;
+}
+
+
+@media screen and (max-width:720px) {
+    
+    .event-items {
+        margin-top: 0 !important;
+    }
+    .timer {
+        font-size: small;
+    }
+
+    .timer .timerBox {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .time-counter {
+        font-size: 0.5rem;
+    }
+
+    .time-counter .hour::after {
+        top: -0.5rem;
+    }
+
+    .time-counter .minutes::after {
+        top: -0.5rem;
+    }
+
+    .time-counter .seconds::after {
+        top: -0.5rem;
+    }
+
+    .inner-event-data .event-title {
+        visibility: hidden;
+    }
+
+    .event-container {
+        grid-template-areas:
+            "ax"
+            "bx";
+        transition: all 0.3s ease;
+        gap: 0;
+    }
+
+    .main-relative-container {
+        width: 98vw;
+        height: 90vh !important;
+    }
+
+    .event-container .column img {
+        width: 50% !important;
+        height: auto;
+        transition: all 0.3s ease;
+        padding: 0 !important;
+    }
+
+    .flex {
+        flex-wrap: wrap;
+    }
+
+    .event-container .col-2 {
+        padding: 1rem 0;
+    }
+
+    .inner-header {
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .inner-header .logo {
+        width: 100%;
+        order: -1;
+    }
+
+    .inner-header .signin {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:1080px) {
+
+    .event-information {
+        margin-top: 0.5rem;
+    }
+    .event-items {
+        margin-top: 1rem;
+    }
+}
+
+.event-container .column {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+
+.event-container .column img {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    padding: 0 0 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.event-container .col-1 {
+    width: 100%;
+}
+
+.event-container .col-2 {
+    overflow-x: scroll;
+}
+
+/* EVENT DETAILS */
+.event-details {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 25rem;
+    max-width: 100%;
+    height: inherit;
+    font-size: 1rem;
+}
+
+.event-details .event-items {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+    height: 2.2rem;
+    text-align: center;
+}
+
+/* FOR JS */
+.event-box {
+    position: relative;
+    display: flex;
+    padding: 0.5rem;
+    border: 1px solid #c99898;
+    border-radius: 0.4rem 0.4rem 0 0;
+    background-color: #ffe8e8;
+}
+
+.event-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a9d3b7;
+    height: auto;
+    padding: 1rem;
+    color: red;
+    font-weight: 600;
+    text-align: center;
+}
+
+.event-objective {
+    padding: 1rem;
+}
+
+/* EVENT OBJECTIVE HIDE */
+.event-information .end-date,
+.event-information .start-time,
+.event-information .end-time,
+.event-information .location,
+.event-information .category {
+    display: none;
+}
+
+
+
+/* ROW 3 */
+.organizer-details {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+
+.flexWrap {
+    flex-wrap: wrap;
+}
+
+.organizer {
+    display: flex;
+    gap: 1rem;
+}
+
+.share-event {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.share-event .share-icons {
+    display: flex;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.share-event .share-icons a:hover {
+    color: red;
+    transition: all 0.3s ease;
+}
+
+/* EVENT INFORMATION CONTAINER */
+.left2Right {
+    animation: left2Right 0.3s ease;
+}
+
+.event-items>div {
+    cursor: pointer;
+    height: auto;
+}
+
+.event-information>div {
+    animation: bottom2Top 0.5s ease;
+}
+
+@keyframes bottom2Top {
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-0.4rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes left2Right {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
