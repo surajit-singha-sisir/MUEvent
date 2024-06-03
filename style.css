@@ -133,18 +133,19 @@ td {
 }
 
 .event-table .tdImg {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 10rem;
     max-width: 40rem;
-    height: auto;
-    padding: 1rem;
+    min-height: 10rem;
+    max-height: 20rem;
 }
 
 .event-table .tdImg img {
-    width: 100%;
-    height: auto;
+    width: 70%;
+    object-fit: cover;
 }
 
 /* Scrollbar CSS */
