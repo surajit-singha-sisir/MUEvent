@@ -49,7 +49,7 @@ header {
 }
 
 .inner-header .column {
-    min-width: 10rem;
+    min-width: 5rem;
     max-width: 50rem;
     display: flex;
     justify-content: center;
@@ -330,6 +330,14 @@ td {
     border-radius: 0.2rem;
 }
 
+.time-counter .day::after {
+    content: 'day';
+    position: absolute;
+    bottom: -0.8rem;
+    font-size: 0.5rem;
+    color: #424242;
+}
+
 .time-counter .hour::after {
     content: 'hour';
     position: absolute;
@@ -421,6 +429,10 @@ td {
         font-size: 0.5rem;
     }
 
+    .time-counter .day::after {
+        top: -0.5rem;
+    }
+
     .time-counter .hour::after {
         top: -0.5rem;
     }
@@ -463,6 +475,7 @@ td {
 
     .event-container .col-2 {
         padding: 1rem 0;
+        overflow-x: scroll;
     }
 
     .inner-header {

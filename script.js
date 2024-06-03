@@ -81,18 +81,17 @@ function eventData() {
     const popUpEventData = document.querySelectorAll(".event-information div");
 
     const eventItems = document.querySelectorAll(".event-items div");
-    
+
     // ANIMATION ADDING
 
     for (let i = 0; i < eventItems.length; i++) {
       let currentIndex = eventItems[i];
 
       currentIndex.onclick = function () {
-
         // Remove the 'event-box' class from all items
         eventItems.forEach(function (j) {
           j.classList.remove("event-box");
-          j.classList.remove('left2Right');
+          j.classList.remove("left2Right");
         });
 
         // HIDE ALL POPUPEVENTDATA
@@ -103,12 +102,61 @@ function eventData() {
         popUpEventData[i].classList.remove("hide");
         // SHOW EVENTITEM
         currentIndex.classList.add("event-box");
-        currentIndex.classList.add('left2Right');
+        currentIndex.classList.add("left2Right");
       };
     }
   }
-  
 
   popupTab();
+
+  function timer() {
+    // NOW DATE AND TIME
+    const now = new Date();
+
+    // EVENT DATE AND TIME
+    // second, minute, hour, day, month, year
+    const dateAndTime = [0, 0, 4, 5, 6, 2024];
+    const eventYear = dateAndTime[5];
+    const eventMonth = dateAndTime[4];
+    const eventDay = dateAndTime[3];
+    const eventHour = dateAndTime[2];
+    const eventMinutes = dateAndTime[1];
+    const eventSeconds = dateAndTime[0];
+
+    // Create event Date object
+    const eventDate = new Date(
+      eventYear,
+      eventMonth - 1,
+      eventDay,
+      eventHour,
+      eventMinutes,
+      eventSeconds
+    );
+
+    // Calculate the difference in milliseconds
+    const timeDifference = eventDate - now;
+
+    // Convert the difference to appropriate units
+    const remainSeconds = Math.floor((timeDifference / 1000) % 60);
+    const remainMinutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+    const remainHour = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+    const remainDay = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 30);
+    const remainMonth = Math.floor(
+      (timeDifference / (1000 * 60 * 60 * 24 * 30)) % 12
+    );
+    const remainYear = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+
+    // Update the HTML page
+    document.querySelector(".day").innerHTML = remainDay;
+    document.querySelector(".hour").innerHTML = remainHour;
+    document.querySelector(".minutes").innerHTML = remainMinutes;
+    document.querySelector(".seconds").innerHTML = remainSeconds;
+  }
+
+  // Call the timer function every second
+  setInterval(timer, 1000);
+
+  // Initial call to display the timer immediately when the page loads
+  timer();
 }
 eventData();
